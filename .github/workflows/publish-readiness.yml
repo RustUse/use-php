@@ -1,0 +1,44 @@
+name: Publish Readiness
+
+"on":
+    pull_request:
+        branches:
+            - main
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    release-readiness:
+        name: Release Readiness Checks
+        runs-on: ubuntu-latest
+        env:
+            FOCUSED_CRATES: >-
+                use-php-version use-php-token use-php-syntax use-php-symbol use-php-namespace use-php-type use-php-attribute use-php-docblock use-php-ini use-php-error use-php-autoload use-composer-json use-packagist use-psr use-php-extension use-wordpress use-wordpress-hook use-wordpress-block use-drupal use-laravel
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install stable Rust toolchain
+              uses: actions-rust-lang/setup-rust-toolchain@v1
+              with:
+                  rustflags: ""
+                  cache-workspaces: |
+                      . -> target
+
+            - name: Check examples with all features enabled
+              run: cargo check --workspace --all-features --examples
+
+            - name: Test workspace without default features
+              run: cargo test --workspace --no-default-features
+
+            - name: Dry-run publish focused crates
+              run: |
+                  for crate in $FOCUSED_CRATES; do
+                    cargo package --list -p "$crate"
+                    cargo publish --dry-run --allow-dirty -p "$crate"
+                  done

@@ -1,0 +1,25 @@
+name: Facade Publish Readiness
+
+"on":
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    facade:
+        name: Facade Dry Run
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v6
+
+            - name: Install stable Rust toolchain
+              uses: actions-rust-lang/setup-rust-toolchain@v1
+              with:
+                  rustflags: ""
+                  cache-workspaces: |
+                      . -> target
+
+            - name: Dry-run publish facade crate
+              run: cargo publish --dry-run --allow-dirty -p use-php

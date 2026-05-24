@@ -1,0 +1,153 @@
+[workspace]
+release = false
+release_always = false
+changelog_update = false
+pr_labels = ["release"]
+max_analyze_commits = 2000
+
+[[package]]
+name = "use-php-version"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-token"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-syntax"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-symbol"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-namespace"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-type"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-attribute"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-docblock"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-ini"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-error"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-autoload"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-composer-json"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-packagist"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-psr"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php-extension"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-wordpress"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-wordpress-hook"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-wordpress-block"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-drupal"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-laravel"
+release = true
+version_group = "rustuse-php"
+
+[[package]]
+name = "use-php"
+release = true
+version_group = "rustuse-php"
+changelog_update = true
+changelog_path = "./CHANGELOG.md"
+changelog_include = [
+    "use-php-version",
+    "use-php-token",
+    "use-php-syntax",
+    "use-php-symbol",
+    "use-php-namespace",
+    "use-php-type",
+    "use-php-attribute",
+    "use-php-docblock",
+    "use-php-ini",
+    "use-php-error",
+    "use-php-autoload",
+    "use-composer-json",
+    "use-packagist",
+    "use-psr",
+    "use-php-extension",
+    "use-wordpress",
+    "use-wordpress-hook",
+    "use-wordpress-block",
+    "use-drupal",
+    "use-laravel",
+]
+
+[changelog]
+header = """# Changelog
+
+## Unreleased
+"""
+protect_breaking_commits = true
+sort_commits = "oldest"
+commit_parsers = [
+    { message = "^feat(?:\\([^)]+\\))?!?: .+", group = "Added" },
+    { message = "^fix(?:\\([^)]+\\))?!?: .+", group = "Fixed" },
+    { message = "^security(?:\\([^)]+\\))?!?: .+", group = "Security" },
+    { message = "^(?:refactor|perf|change)(?:\\([^)]+\\))?!?: .+", group = "Changed" },
+    { message = "^docs(?:\\([^)]+\\))?!?: .+", group = "Documentation" },
+    { message = "^(?:build|ci|chore|deps|test)(?:\\([^)]+\\))?!?: .+", group = "Tooling" },
+    { footer = "^changelog: ?ignore$", skip = true },
+    { message = "^.*", group = "Changed" },
+]

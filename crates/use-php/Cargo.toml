@@ -1,0 +1,89 @@
+[package]
+name = "use-php"
+description = "Feature-gated facade crate for RustUse PHP primitives."
+publish = true
+autoexamples = false
+authors.workspace = true
+version.workspace = true
+edition.workspace = true
+homepage.workspace = true
+license.workspace = true
+repository.workspace = true
+rust-version.workspace = true
+readme = "README.md"
+documentation = "https://docs.rs/use-php"
+keywords = ["php", "composer", "wordpress", "metadata"]
+categories = ["development-tools", "data-structures"]
+
+[package.metadata.docs.rs]
+all-features = true
+
+[features]
+default = ["full"]
+version = ["dep:use-php-version"]
+token = ["dep:use-php-token"]
+syntax = ["dep:use-php-syntax"]
+symbol = ["dep:use-php-symbol"]
+namespace = ["dep:use-php-namespace"]
+type = ["dep:use-php-type"]
+attribute = ["dep:use-php-attribute"]
+docblock = ["dep:use-php-docblock"]
+ini = ["dep:use-php-ini"]
+error = ["dep:use-php-error"]
+autoload = ["dep:use-php-autoload"]
+composer-json = ["dep:use-composer-json"]
+packagist = ["dep:use-packagist"]
+psr = ["dep:use-psr"]
+extension = ["dep:use-php-extension"]
+wordpress = ["dep:use-wordpress"]
+wordpress-hook = ["dep:use-wordpress-hook"]
+wordpress-block = ["dep:use-wordpress-block"]
+drupal = ["dep:use-drupal"]
+laravel = ["dep:use-laravel"]
+full = [
+    "version",
+    "token",
+    "syntax",
+    "symbol",
+    "namespace",
+    "type",
+    "attribute",
+    "docblock",
+    "ini",
+    "error",
+    "autoload",
+    "composer-json",
+    "packagist",
+    "psr",
+    "extension",
+    "wordpress",
+    "wordpress-hook",
+    "wordpress-block",
+    "drupal",
+    "laravel",
+]
+
+[dependencies]
+use-composer-json = { version = "0.0.1", path = "../use-composer-json", optional = true }
+use-drupal = { version = "0.0.1", path = "../use-drupal", optional = true }
+use-laravel = { version = "0.0.1", path = "../use-laravel", optional = true }
+use-packagist = { version = "0.0.1", path = "../use-packagist", optional = true }
+use-php-attribute = { version = "0.0.1", path = "../use-php-attribute", optional = true }
+use-php-autoload = { version = "0.0.1", path = "../use-php-autoload", optional = true }
+use-php-docblock = { version = "0.0.1", path = "../use-php-docblock", optional = true }
+use-php-error = { version = "0.0.1", path = "../use-php-error", optional = true }
+use-php-extension = { version = "0.0.1", path = "../use-php-extension", optional = true }
+use-php-ini = { version = "0.0.1", path = "../use-php-ini", optional = true }
+use-php-namespace = { version = "0.0.1", path = "../use-php-namespace", optional = true }
+use-php-symbol = { version = "0.0.1", path = "../use-php-symbol", optional = true }
+use-php-syntax = { version = "0.0.1", path = "../use-php-syntax", optional = true }
+use-php-token = { version = "0.0.1", path = "../use-php-token", optional = true }
+use-php-type = { version = "0.0.1", path = "../use-php-type", optional = true }
+use-php-version = { version = "0.0.1", path = "../use-php-version", optional = true }
+use-psr = { version = "0.0.1", path = "../use-psr", optional = true }
+use-wordpress-block = { version = "0.0.1", path = "../use-wordpress-block", optional = true }
+use-wordpress-hook = { version = "0.0.1", path = "../use-wordpress-hook", optional = true }
+use-wordpress = { version = "0.0.1", path = "../use-wordpress", optional = true }
+
+[lints]
+workspace = true
