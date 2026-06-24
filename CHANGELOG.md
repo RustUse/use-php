@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## [0.0.1](https://github.com/RustUse/use-php/releases/tag/use-php-v0.0.1) - 2026-05-24
+
+### Changed
+
+- Add initial use-php workspace scaffold
+
 ### Added
 
 - Added the initial `use-php` multi-crate workspace scaffold.
